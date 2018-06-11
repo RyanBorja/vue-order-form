@@ -4,13 +4,18 @@
 	<title>Vue Order Form</title>
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="container">
 
 	<div id="main">
-
-
-
 		<h1>Services</h1>
+		<ul>
+			<li v-on:click="toggleActive(service)" v-bind:class="{ 'active': service.active }" v-for="service in services">
+				{{ service.name }} <span>{{ service.price }}</span>
+			</li>
+		</ul>
+		<div class="total">
+			Total <span>{{ total() }}</span>
+		</div>
 
 	</div>
 
