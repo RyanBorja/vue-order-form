@@ -5,5 +5,6 @@ gulp.task('copy', function() {
 		.pipe(gulp.dest('dist'));
 });
 
-
-
+gulp.task('watch', function() {
+	gulp.watch('app/**/*', [ 'copy' ]);
+});
