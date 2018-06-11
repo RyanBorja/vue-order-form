@@ -1,3 +1,8 @@
+// Define a custom filter called 'currency'
+Vue.filter('currency', function(value) {
+	return '$' + value.toFixed(2);
+});
+
 var demo = new Vue({
 
 	el: '#main',
@@ -8,7 +13,7 @@ var demo = new Vue({
 			{
 				name: "Web Development",
 				price: 300,
-				active: true
+				active: false
 			},
 			{
 				name: "Design",
@@ -18,7 +23,7 @@ var demo = new Vue({
 			{
 				name: "Integration",
 				price: 250,
-				active: true
+				active: false
 			},
 			{
 				name: "Training",
@@ -33,7 +38,15 @@ var demo = new Vue({
 
 		total: function() {
 
-			return 0;
+			 var total = 0;
+
+			 this.services.forEach(function(s) {
+			 	if (s.active) {
+			 		total += s.price;
+			 	}
+			 });
+
+			 return total;
 
 		},
 
